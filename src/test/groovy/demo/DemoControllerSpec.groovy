@@ -8,8 +8,8 @@ class DemoControllerSpec extends Specification implements ControllerUnitTest<Dem
     
     void "test save is successful"() {
         given:
-        def foo = GroovySpy(ParkingType, global: true)
-        1 * foo.save() >> foo
+        def parkingType = GroovySpy(ParkingType, global: true)
+        1 * parkingType.save() >> parkingType
 
         when:
         controller.create()
@@ -20,8 +20,8 @@ class DemoControllerSpec extends Specification implements ControllerUnitTest<Dem
 
     void "test save is unsuccessful"() {
         given:
-        def foo = GroovySpy(ParkingType, global: true)
-        1 * foo.save() >> null
+        def parkingType = GroovySpy(ParkingType, global: true)
+        1 * parkingType.save() >> null
 
         when:
         controller.create()
@@ -32,8 +32,8 @@ class DemoControllerSpec extends Specification implements ControllerUnitTest<Dem
 
     void 'test save throws DataIntegrityViolationException'() {
         given:
-        def foo = GroovySpy(ParkingType, global: true)
-        1 * foo.save() >> { throw new DataIntegrityViolationException('Something Went Wrong') }
+        def parkingType = GroovySpy(ParkingType, global: true)
+        1 * parkingType.save() >> { throw new DataIntegrityViolationException('Something Went Wrong') }
 
         when:
         controller.create()
